@@ -22,13 +22,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Montar el directorio 'static' para servir archivos estáticos
-app.mount("/static", StaticFiles(directory="Simulador/static"), name="static")
-
 # Serve la página principal
 @app.get("/", response_class=HTMLResponse)
 async def read_root():
-    with open("Simulador/prueba.html", "r", encoding="utf-8") as f:
+    with open("prueba.html", "r", encoding="utf-8") as f:
         return f.read()
 
 # Símbolos globales - usar estos en toda la aplicación
@@ -509,3 +506,4 @@ def get_examples():
             }
         ]
     }
+
