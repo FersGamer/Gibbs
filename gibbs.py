@@ -13,13 +13,19 @@ import traceback
 
 app = FastAPI(title="Gibbs Sampler API", version="2.0.0")
 
+#    Estas son las URLs que pueden hacerle peticiones a tu API.
+origins = [
+    "http://localhost",
+    "https://https://gibbs-zvyw.onrender.com/", # Si ya tienes un dominio
+]
+
 # Configurar CORS para permitir requests del frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins, # Permite los orígenes especificados
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"], # Permite todos los métodos (GET, POST, etc.)
+    allow_headers=["*"], # Permite todas las cabeceras
 )
 
 # Serve la página principal
@@ -506,4 +512,5 @@ def get_examples():
             }
         ]
     }
+
 
